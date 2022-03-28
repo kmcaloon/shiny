@@ -1,0 +1,16 @@
+{
+    "require": {
+        "padaliyajay/php-autoprefixer": "^1.3",
+        "matthiasmullie/minify": "^1.3",
+        "sentry/sdk": "^3.1",
+        "guzzlehttp/guzzle": "^7.0",
+        "tarkhov/guzzle-xml": "^1.0",
+        "cloudflare/sdk": "^1.3"
+    },
+    "autoload": {
+      "classmap": [ "src", "lib" ]
+    },
+    "config": {
+      "optimize-autoloader": true
+    }
+}

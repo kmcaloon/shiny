@@ -1,0 +1,13 @@
+@import 'abstracts';
+
+.Form {
+
+  &.has-dark-inputs {
+
+    .form-control,
+    select,
+    textarea {
+      background-color: $offwhite;
+    }
+  }
+}

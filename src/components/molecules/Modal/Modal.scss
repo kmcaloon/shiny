@@ -1,0 +1,29 @@
+@import 'abstracts';
+
+.Modal {
+  opacity: 0;
+  visibility: hidden;
+
+  &.is-showing {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+    z-index: $zindex-modal;
+  }
+
+  &__ovlay {
+    opacity: .98;
+  }
+
+  &__body {
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+  }
+
+  &__close {
+    top: -6.5rem;
+    right: -3.5rem;
+    font-size: 2rem;
+  }
+}

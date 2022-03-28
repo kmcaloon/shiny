@@ -1,0 +1,40 @@
+@import 'abstracts';
+
+.Popup {
+  z-index: $zindex-modal;
+  background: rgba( 0,0,0,0.9);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  overflow-y: scroll;
+  height: 100vh;
+  transition: 0.3s ease-in;
+
+  &:not(.is-showing) {
+    visibility: hidden;
+    transition: 0s;
+  }
+
+  // &__ovlay {
+  //   background: transparentsize( $blue-dark, .05 );
+  // }
+  &__close {
+    top: -3.5rem;
+    right: 0rem;
+    font-size: 2rem;
+  }
+
+  &__content {
+    max-width: 680px;
+    transition: 0.2s ease-in 0.3s;
+  }
+  &:not(.is-showing) &__content {
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: 0s;
+  }
+
+  &__img {
+    padding-top: 50%;
+  }
+
+}

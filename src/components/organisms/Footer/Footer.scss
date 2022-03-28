@@ -1,0 +1,21 @@
+@import 'abstracts';
+
+.Ft {
+
+  &__social {
+
+    .Social {
+      --size: 31px;
+      font-size: 19px;
+    }
+
+    a {
+      background: #586783 !important;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+  }
+}

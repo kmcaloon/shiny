@@ -1,0 +1,634 @@
+@import 'config';
+@import 'abstracts';
+
+body.is-waiting {
+  * {
+    cursor: wait !important;
+  }
+}
+
+/* ------ = Global UI = --------------------------------------------------------------------- */
+.jsyesnodialog {
+  z-index: 999999;
+
+  &__dialog {
+    margin-top: 3rem;
+
+    &__body {
+      padding-top: 0.5rem;
+      &:before {
+        display: none !important;
+        background: transparent !important;
+      }
+    }
+
+    &__button {
+      min-width: 4rem;
+      width: auto !important;
+    }
+
+    
+  }
+}
+
+/* ------ = Flex/Page Builder = --------------------------------------------------------------------- */
+// .acf-field-flexible-content {
+//   &:before {
+//     width: 80px !important;
+//   }
+
+//   > .acf-input {
+//     width: calc( 100% - 80px ) !important;
+//     margin-left: 80px !important;
+//   }
+
+
+$layouts: (
+);
+.acfe-modal {
+
+  .acfe-flexible-layout-thumbnail {
+    background-size: 100% auto;
+    background-position: left center;
+  }
+
+  @each $layout in $layouts {
+    [data-layout="#{$layout}"] .acfe-flexible-layout-thumbnail {
+
+      $filename: $layout;
+
+      @if $layout == 'CourseLogos' or $layout == 'logos' {
+        $filename: 'logos-section';
+      }
+      
+      background-image: bg( 'block-#{$filename}.jpg');
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.inside.acf-fields.-top.-sidebar {
+  //min-height: auto !important;
+}
+.select2-container {
+  padding: 0 !important;
+}
+  
+
+// }
+
+/* ------ = Block previews = --------------------------------------------------------------------- */
+$blocks: (
+
+);
+
+.block-editor-block-types-list__list-item {
+  width: calc( 33.33% - 8px );
+  margin: 4px !important;
+}
+
+
+.editor-block-list-item {
+
+  @at-root .block-editor-block-types-list__item-icon {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  @each $block in $blocks {
+    &-acf-#{$block} .block-editor-block-types-list__item-icon {
+      background-image: bg( 'block-#{$block}.jpg' );
+    }
+  }
+
+
+
+
+}
+
+/* ------ = Blockeditor = --------------------------------------------------------------------- */
+
+.wp-block {
+  
+
+  .post-type-gated_cta &,
+  .post-type-article & {
+    max-width: 700px;
+  }
+  .post-type-landing_page &,
+  .post-type-alumni &,
+  .post-type-international & {
+    max-width: 1000px;
+  }
+
+  .form-select {
+    max-width: 100%;
+  }
+
+}
+
+
+
+@media (min-width: 782px) {
+  .interface-complementary-area {
+    min-width: 28vw;
+  }
+}
+.components-panel {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+// Hidden gutenburg components.
+.components-dropdown.table-of-contents,
+.components-tab-panel__tabs-item:nth-of-type(2),
+.block-editor-block-toolbar__slot .components-dropdown  {
+  display: none !important;
+}
+
+body .editor-styles-wrapper {
+  font-family: 'proxima-nova';
+  padding: 1.5rem;
+  color: $black;
+
+  .editor-post-title {
+    font-family: 'futura-pt';
+    font-size: 1.15rem;
+    z-index: 3;
+
+    &__input {
+      line-height: 1.2;
+    }
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+
+  button[aria-label="Change alignment"] {
+    display: none !important;
+  }
+
+
+
+}
+
+/*------------------------------------------------*/
+
+/*         = Reusable blocks.
+
+/*------------------------------------------------*/
+
+// Edit panel.
+.reusable-block-edit-panel {
+
+  &__title {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font-weight: 900 !important;
+    flex: 1 !important;
+  }
+
+  &__button {
+    //display: none !important;
+    background: var( --wp-admin-theme-color ) !important;
+    color: white !important;
+    border: solid 1px var( --wp-admin-theme-color-darker-20 ) !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+}
+
+
+
+/* ------ = Options Post Types. = --------------------------------------------------------------------- */
+body.type-options {
+
+
+  /*------------------------------------------------*/
+
+  /*         = Gutenburg.
+
+  /*------------------------------------------------*/
+  .edit-post-header {
+
+    &__settings {
+
+      > *:not( .is-primary ):not( .interface-pinned-items ) {
+        display: none;
+      }
+    }
+  }
+
+  .components-panel  {
+
+    > div:not( [class*="block"] ) {
+      display: none !important;
+    }
+  }
+
+
+
+}
+
+
+
+/* ------ = Admin menu. = --------------------------------------------------------------------- */
+// Ridiculous override of plugin's ridiculous selector
+#adminmenu#adminmenu#adminmenu {
+
+  .wp-menu-separator {
+      display: none;
+  }
+
+  /*-----------------------------------------
+      = TOP LEVEL 
+  ------------------------------------------*/
+  a.menu-top {
+
+      &:focus {
+          color: white !important;
+      }
+      &:hover {
+          color: #00b9eb !important;
+      }
+      
+      /* = HEADING
+      -----------------------------*/
+      .wp-menu-name {
+          font-size: 13px;
+          opacity: 0.9;
+          padding: 12px 0;
+      }
+
+      /* = ICON
+      -----------------------------*/
+      div.wp-menu-image,
+      &.ame-has-custom-dashicon > .wp-menu-image {
+          width: 28px;
+          height: 28px;
+
+          &:before {
+              width: 15px;
+              height: 15px;
+              font-size: 15px !important;
+              padding: 12px 0;
+          }
+      }
+  }
+
+  /*-----------------------------------------
+      = SECTIONS WITH DROPDOWNS
+  ------------------------------------------*/
+
+  // Hide system menu
+  // body:not(.user-kmcaloon) & .system-menu {
+  //      display: none;
+  // }
+
+  /* = HEADINGS
+  -----------------------------*/
+  li.js-menu-section {
+      position: relative;
+      //padding-left: 8px;
+  
+      &:after {
+          font-family: 'dashicons';
+          content: '\f345';
+          font-size: 11px;
+          position: absolute;
+          right: 10px;
+          top: 12px;
+          color: white;
+          opacity: 0.5;
+          transition: 0.2s;
+      }
+
+      a.menu-top {
+          background-color: transparent !important;
+      }
+
+      .wp-menu-image {
+          //display: none !important;
+      }
+      .wp-menu-name {
+           background-color: transparent !important;
+      }
+  }
+  // Active heading
+  li.js-menu-section.is-collapsed {
+      background-color: #191e23;
+
+      &:after {
+          transform: rotate(90deg);
+      }
+
+      > a:not(:hover) {
+          //color: #00b9eb;
+          color: white;
+      }
+  }
+  
+
+  /* = 2ND LEVEL
+  -----------------------------*/
+  li.js-menu-section ~ .menu-top:not(.js-menu-section):not(.top) {
+      transition: 0.3s;
+
+      &:after {
+          display: none !important;
+      }
+
+      /* Link */
+      a.menu-top {
+          padding-left: 10px;
+      }
+
+      /* Label */
+      .wp-menu-name {
+          padding-left: 10px;
+          font-size: 12px;
+          border-left: solid 2px rgb(70,70,70);
+          position: relative;
+
+          &:before {
+              content: '';
+              position: absolute;
+              height: 5px;
+              width: 5px;
+              border-radius: 100%;
+              background: rgb(70,70,70);
+              top: 18px;
+              left: -3.5px;
+          }
+      }
+      
+      /* Icon */
+      .wp-menu-image {
+          display: none;
+
+          &.dashicons,
+          &.dashicons-before:before {
+              width: 15px;
+              height: 15px;
+              font-size: 15px;
+          }
+      }
+
+  }
+  // Uncollapsed items
+  li.js-menu-section ~ .menu-top:not(.js-menu-section):not(.top):not(.is-collapsed)  {
+      max-height: 0;
+      min-height: 0;
+      opacity: 0;
+      overflow: hidden;
+  }
+  // Collapsed items
+  li.js-menu-section ~ .menu-top:not(.js-menu-section).is-collapsed {
+      opacity: 1;
+      max-height: 3rem;
+      transition: max-height 0.3s,
+                  min-height 0.3s,
+                  opacity 0.45s 0.15s !important;
+  }
+  // Current
+  li.wp-has-current-submenu {
+
+      a.wp-has-current-submenu {
+          background-color: darken(#006799, 5%);
+          opacity: 1;
+
+          &:after {
+              display: none;
+          }
+      }
+  }
+
+  /* = 3RD LEVEL
+  -----------------------------*/
+  .wp-submenu {
+      //width: 0 !important;
+      min-width: 0 !important;
+      left: 160px !important;
+      background-color: #191e23 !important;
+      position: fixed !important;
+      margin-top: 0 !important;
+      top: 32px !important;
+      z-index: -999;
+      height: calc( 100% - 32px );
+      padding-top: 3rem;
+      padding-bottom: 1.5rem;
+      overflow-y: scroll;
+      visibility: hidden;
+
+      scrollbar-color: black;
+
+      &::-webkit-scrollbar{
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: black;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #545353;
+        border-radius: 10px;
+      }
+
+
+      /* Link */
+      a {
+          font-size: 12px;
+          color: white;
+          padding: 10px 10px 10px 20px !important;
+          position: relative;
+          transition: 0.3s !important;
+
+          &:before {
+              content: '';
+              height: 3px;
+              width: 3px;
+              display: block;
+              //border-radius: 100%;
+              border: solid 1px white;
+              position: absolute;
+              left: 8px;
+              top: 14px;
+              opacity: 0.15;
+              transition: 0.3s;
+          }
+
+          &:hover {
+              cursor: pointer;
+
+              &:before {
+                  border-color: #00a0d2 !important;
+                  opacity: 1;
+              }
+          }
+      }
+      /* Current Link */
+      a.current {
+          border-left: solid 2px #00a0d2;
+
+          &:hover {
+              cursor: default;
+          }
+      }
+  }
+  // Scrollable
+  .wp-submenu.is-scrollable {
+      overflow-y: scroll;
+  }
+  // Hidden
+  .wp-has-submenu .wp-submenu {           
+      //z-index: -9999 !important;
+      opacity: 0;
+      transform: translateX(-20px); 
+      transition: z-index 0s 0.3s,
+                  opacity 0.15s ease-in,
+                  top 0s 0.15s,
+                  visibility 0.3s,
+                  transform 0.15s;
+
+      a {
+          opacity: 0;
+          transition: 0.15s 0s;
+      }
+  }
+  // Showing
+  .wp-has-submenu:hover .wp-submenu,
+  .wp-has-submenu.is-hovered,
+  .wp-has-submenu .wp-submenu:hover,
+  .wp-has-submenu .wp-submenu:active {
+      width: 160px !important;
+      visibility: visible;
+      top: 0 !important;
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 3;
+      transition: z-index 0s 0.15s,
+                  opacity 0.15s 0.15s,
+                  transform 0.15s 0.15s;
+
+      a {
+          opacity: 0.9;
+          transition: 0.15s 0.25s;
+      }
+  }
+  // Hidden when parent is current screen
+  .wp-has-current-submenu .wp-submenu {
+      left: 160px;
+      top: -9999px;
+      position: absolute;
+  }
+  // Showing when parent is current screen
+  .wp-has-current-submenu:hover .wp-submenu,
+  .wp-has-current-submenu .wp-submenu:hover {
+      top: 0;
+      opacity: 1;
+  }
+
+}
+
+
+/* ------ = Tiny MCE. = --------------------------------------------------------------------- */
+
+// Buttons.
+.mce-toolbar {
+  .mce-ico[style*="contact-form"] {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mce-ico[style*="editor"] {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+
+
+
+/* ------ = Gravity = --------------------------------------------------------------------- */
+
+
+/*-----------------------------------------
+    = Custom addon sections.
+------------------------------------------*/
+[id*="gaddon-setting-row-section"] {
+  //border: solid 1px $gray-border;
+  border-bottom: solid 1px $gray-border;
+  margin-bottom: 1rem;
+  //background: white;
+
+  th {
+    font-weight: 600 !important;
+    font-size: 1rem;
+  }
+
+  + tr {
+
+    > th {
+      padding-top: 1rem !important;
+    }
+
+    h4 {
+      margin-top: 0.5rem !important;
+    }
+
+    .repeater {
+
+      tr > th,
+      tr > td {
+        padding-top: 0.5rem !important;
+      }
+      tr > th {
+        padding-right: 0.25rem !important;
+      }
+      .repeater-buttons {
+        margin-left: 0.5rem;
+      }
+    }
+    
+
+
+  }
+
+}
+
+
+
+/* ------ = Meta pages. = --------------------------------------------------------------------- */
+
+
+// Product cats.
+.taxonomy-product_cat {
+
+  // Exluded fields.
+  .term-description-wrap {
+    display: none !important;
+  }
+}
+
+/* ------ = Meta boxes. = --------------------------------------------------------------------- */
+
+#side-sortables {
+  #resource_topicdiv,
+  #resource_typediv {
+    display: none !important;
+  }
+}

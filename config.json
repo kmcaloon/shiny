@@ -1,0 +1,11 @@
+{
+  "ROOT_NAMESPACE": "Shiny",
+  "PUBLIC_DIST_URL": "",
+  "LOCAL_DIST_URL": "http://localhost/shiny/wp-content/themes/shiny/dist",
+  "DEV_DIST_URL":  "http://localhost:3000/shiny/wp-content/themes/shiny/dist",
+  "CUSTOM_TEMPLATE_HIERARCHY": false,
+  "PREFETCH_LOCAL_LINKS": false,
+  "INCLUDE_INTERACTION_OBSERVER_POLYFILL": true,
+  "KILL_JQUERY": true,
+  "GRAPHQL_DEBUG": true
+}

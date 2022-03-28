@@ -1,0 +1,75 @@
+
+
+/* ------ = Visiblity = --------------------------------------------------------------------- */
+
+.hidden {
+  display: none !important;
+}
+
+/* ------ = Backgrounds = --------------------------------------------------------------------- */
+
+.bg-white {
+  background-color: white;
+  color: $black;
+}
+
+/* ------ = Containerish = --------------------------------------------------------------------- */
+
+/* ------ = Forms. = --------------------------------------------------------------------- */
+
+.form-label {
+  font-family: $f-accent;
+  font-weight: 600;
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+
+  .is-required & {
+    &:after {
+      content: '*';
+      color: $black;
+    }
+  }
+}
+
+.form-check {
+  
+  &-input {
+    margin-top: 0.1rem;
+  }
+}
+
+/* ------ = Tables = --------------------------------------------------------------------- */
+.table {
+
+}
+
+
+/* ------ = Extras. = --------------------------------------------------------------------- */
+
+/**
+ * Opacities.
+ */
+$opacities: (
+  0: 0,
+  25: 0.25,
+  50: 0.5,
+  66: .66,
+  75: 0.75,
+  100: 1,
+);
+@mixin opacity( $value ) {
+  opacity: $value;
+}
+@each $key, $value in $opacities {
+
+  .opacity-#{$key} {
+    @include opacity( $value );
+  }
+
+}
+
+
+.trans {
+  transition: $transition-base;
+}

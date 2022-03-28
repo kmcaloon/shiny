@@ -1,0 +1,193 @@
+/**
+ * Global Styles.
+ */
+
+@import 'config';
+// @import 'reset';
+@import 'bootstrap';
+@import 'utils';
+@import 'type';
+@import 'icons';
+@import 'layout';
+@import 'ui';
+@import 'bootstrap/scss/utilities/api';
+@import 'components/*/*/_*';
+/* @import 'motions';
+@import 'icons'; */
+
+
+/* ------ = CSS Propertoes. = --------------------------------------------------------------------- */
+
+:root,
+.acfe-flexible-placeholder {
+
+  /*------------------------------------------------*/
+
+  /*         = Colors
+
+  /*------------------------------------------------*/
+
+  // Social.
+  --facebook-color: #365397;
+  --instagram-color: #396d9a;
+  --youtube-color: #ff3333;
+  --twitter-color: #00a9f1;
+  --linkedin-color: #006db3;
+
+  /*------------------------------------------------*/
+
+  /*         = Typography.
+
+  /*------------------------------------------------*/
+
+  --f-base:   'Arial', sans-serif;
+  --f-accent: 'Roboto', 'Arial', sans-serif;
+  --f-base: #{$font-family-base};
+  --f-accent: #{$font-family-accent};
+  --f-icons:  'icons';
+  --p-md: 1rem;
+  --p-lg: rem(18px);
+  /* Put your fancy fonts here. */
+  // .fonts-loaded,
+  // .wf-active {
+  //   --f-base: $font-family-base;
+  //   --f-accent: $font-family-accent;
+  // }
+
+  //*------------------------------------------------*/
+
+  /*         = Spacing.
+
+  /*------------------------------------------------*/
+
+  // --container-xl: 1160px;
+  // --container-lg: 1100px;
+  // --container-md: 1000px;
+  // --container-sm: 800px;
+  // --container-xs: 600px;
+
+  /*------------------------------------------------*/
+
+  /*         = Misc.
+
+  /*------------------------------------------------*/
+
+  --border-sm: 1px;
+  --border-md: 3px;
+  --col-padding: #{$col-padding};
+  --radius-md: #{$border-radius};
+  --z-header: 3;
+  --z-menu: 3;
+  --trans-md: 0.15s;
+  // --input-height-sm: 38px;
+  // --input-height-lg: 44px;
+  // --input-height-md: 42px;
+  // --header-height: 56px;
+
+
+
+}
+
+
+/* ------ = Fallbacks. = --------------------------------------------------------------------- */
+template {
+  display: none !important;
+}
+
+/* ------ = Accessiblility. = --------------------------------------------------------------------- */
+.srt,
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+
+/* ------ = Layout/Spacing. = --------------------------------------------------------------------- */
+body {
+  overflow-x: hidden;
+}
+
+
+
+/* ------ = Input/forms. = --------------------------------------------------------------------- */
+
+input {
+  line-height: 1;
+}
+
+/* ------ = UI. = --------------------------------------------------------------------- */
+
+button {
+  color: inherit;
+  background-color: initial;
+  //font: initial;
+  border: none;
+  padding: 0;
+  text-align: initial;
+  //font-family: $font-family-accent;
+  //font-size: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+select {
+  cursor: pointer;
+}
+img {
+
+  & {
+    max-width: 100%;
+  }
+  
+  //&,
+  &[class*="wp-image"].size-full {
+    width: 100%;
+    height: auto;    
+  }
+}
+img.wp-image {
+  width: auto;
+}
+
+img.lazy[data-src]:not(.is-loaded) {
+	filter: blur(7px);
+	transition: filter 400ms, -webkit-filter 400ms;
+}
+
+// Might need to watch this.
+i {
+  
+  &,
+  & + span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  & {
+    line-height: 0;
+
+    + span {
+      line-height: 1;
+    }
+  }
+
+
+  svg {
+    width: 1em;
+    height: auto;
+    fill: currentColor;
+  }
+}
+div,
+section {
+  background-size: cover;
+}
+

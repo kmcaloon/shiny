@@ -1,0 +1,380 @@
+/**
+ * Font sizes.
+ */
+
+$f-0: 1rem;
+$f-05: 1.15rem;
+$f-1: 1.25rem;
+$f-2: 1.5rem;
+$f-3: 1.75rem;
+$f-4: 2rem;
+$f-5: 2.25rem;
+$f-6: 2.5rem;
+$f-8: 3rem;
+$font-sizes: (
+  'small': 0.8rem,
+  0: $f-0,
+  '05': $f-05,
+  1: $f-1,
+  2: $f-2,
+  3: $f-3,
+  4: $f-4,
+  5: $f-5,
+  6: $f-6,
+  //7: $f-0,
+  8: $f-8,
+);
+@mixin font-size( $size ) {
+  font-size: map-get( $font-sizes, $size ) !important;
+}
+@each $font-size, $value in $font-sizes {
+  .f-#{$font-size} {
+    font-size: $value !important;
+  }
+  @each $bp, $size in $grid-breakpoints {
+
+    @if( str-index( $bp, 'xxl' ) == null ) {
+      @include media-breakpoint-up( $bp ) {
+        .#{$bp}\:f-#{$font-size} {
+          @include font-size( $font-size );
+        }
+      }
+    }
+  }
+}
+
+
+body {
+  text-rendering: geometricPrecision;
+  font-display: swap;
+  line-height: 1.3;
+  font-family: $font-family-base;
+}
+p {
+  line-height: 1.6;
+}
+h1, h2, h3, h4 {
+
+  &,
+  & span {
+    line-height: 1.1em;
+  }
+}
+
+b,
+strong {
+  font-weight: 800;
+}
+
+.f-base {
+  font-family: $font-family-base;
+}
+.f-accent {
+  font-family: $font-family-accent;
+}
+
+/* ------ = Utils. = --------------------------------------------------------------------- */
+
+/**
+ * Weights.
+ */
+$weights: (
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+);
+@mixin font-weight( $weight ) {
+  font-weight: $weight !important;
+}
+@each $weight in $weights {
+  .fw-#{$weight} {
+    @include font-weight( $weight );
+  }
+
+}
+
+/* ------ = Fonts. = --------------------------------------------------------------------- */
+.f-accent {
+  font-family: $font-family-accent;
+}
+
+/* ------ = Style = --------------------------------------------------------------------- */
+
+.italic {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.hover\:underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* ------ = Colors. = --------------------------------------------------------------------- */
+.white {
+  color: white;
+}
+.black {
+  color: $black;
+}
+.gray {
+  color: $gray;
+}
+
+/* ------ = Alignment. = --------------------------------------------------------------------- */
+// @each $bp, $size in $grid-breakpoints {
+
+//   @if( str-index( $bp, 'xxl' ) == null ) {
+//     @include media-breakpoint-up( $bp ) {
+//       .#{$bp}\:hd-#{$style} {
+//         @include heading( $style );
+//       }
+//     }
+//   }
+// }
+
+
+/* ------ = Headings. = --------------------------------------------------------------------- */
+
+[class*="hd-"],
+h2,
+h3,
+h4,
+h4 {
+
+}
+
+$heading-styles: (
+  sm,
+  md,
+  lg,
+);
+
+/**
+ * Heading.
+ */
+@mixin heading( $style: md ) {
+ 
+
+}
+//.hd,
+.hd-md {
+  @include heading(md);
+}
+
+@each $style in $heading-styles {
+
+  @if $style != 'md' {
+    .hd-#{$style} {
+      @include heading( $style );
+    }
+  }
+
+  @each $bp, $size in $grid-breakpoints {
+
+    @if( str-index( $bp, 'xxl' ) == null ) {
+      @include media-breakpoint-up( $bp ) {
+        .#{$bp}\:hd-#{$style} {
+          @include heading( $style );
+        }
+      }
+    }
+  }
+
+}
+
+
+[class*="prehd"] {
+
+}
+
+$preheading-styles: (
+  sm,
+  md,
+  lg,
+);
+
+/**
+ * Preheading.
+ */
+@mixin preheading( $style: md ) {
+
+}
+
+.prehd {
+  @include preheading();
+}
+
+@each $style in $preheading-styles {
+
+  @if $style != 'md' {
+    .prehd-#{$style} {
+      @include preheading( $style );
+    }
+  }
+
+
+  @each $bp, $size in $grid-breakpoints {
+
+    @if( str-index( $bp, 'xxl' ) == null ) {
+      @include media-breakpoint-up( $bp ) {
+        .#{$bp}\:prehd-#{$style} {
+          @include preheading( $style );
+        }
+      }
+    }
+  }
+
+}
+
+[class*="subhd"] {
+
+}
+
+$subheading-styles: (
+  sm,
+  md,
+  lg,
+);
+
+/**
+ * Subheading
+ */
+@mixin subheading( $style: md ) {
+  
+
+}
+
+.subhd {
+  @include subheading();
+}
+
+@each $style in $preheading-styles {
+
+  @if $style != 'md' {
+    .subhd-#{$style} {
+      @include subheading( $style );
+    }
+  }
+
+  @each $bp, $size in $grid-breakpoints {
+
+    @if( str-index( $bp, 'xxl' ) == null ) {
+      @include media-breakpoint-up( $bp ) {
+        .#{$bp}\:subhd-#{$style} {
+          @include subheading( $style );
+        }
+      }
+    }
+  }
+
+}
+
+
+/* ------ = Paragraphish. = --------------------------------------------------------------------- */
+
+/**
+ * Paragraph.
+ */
+@mixin paragraph( $size: md ) {
+  font-family: $f-base;
+
+  &,
+  & p {
+    line-height: 1.6;
+  }
+
+  li {
+    margin-bottom: 1em;
+  }
+  
+  @if $size == sm {
+
+
+  }
+  @else if $size == md {
+    &,
+    & p {
+    
+    }
+  }
+  @else if $size == lg {
+ 
+  }
+
+}
+
+$paragraph-sizes: (
+  'sm',
+  'lg',
+);
+.par {
+  @include paragraph();
+}
+@each $size in $paragraph-sizes {
+  .par-#{$size} {
+    @include paragraph( $size );
+  }
+}
+
+
+/* ------ = Links. = --------------------------------------------------------------------- */
+
+a {
+  transition: var( --trans-md );
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ------ = Styles. = --------------------------------------------------------------------- */
+
+/**
+ * Caps.
+ */
+$cap-sizes: (
+);
+@mixin caps( $size: md ) {
+
+}
+.caps {
+  @include caps();
+}
+@each $cap-size in $cap-sizes {
+
+  .caps-#{$cap-size} {
+    @include caps( $cap-size );
+  }
+}
+
+/* ------ = Lists. = --------------------------------------------------------------------- */
+.cleanlist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.inlinelist {
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    &:not(:last-of-type) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+.doublecol {
+  column-count: 2;
+  li {
+    //width: 100%;
+    display: inline-block;
+  }
+
+
+}
