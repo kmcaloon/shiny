@@ -8,7 +8,7 @@
 ![enter image description here](https://drive.google.com/uc?export=view&id=1ebT8kODAE-BxnlRR82ufxK_3hvZmA7VF)
 
   
-
+**A shiny WordPress starter framework for building modern performant web apps**
   
 
 This is the personal starter framework that I use when starting new WordPress projects. It is a collection of code and patterns that I have built up over the years, including a custom scss/css framework that is sort of like the mutant child of Bootstrap and Tailwind. This repository and README are WIPs, and although this codebase is for personal use I figured I would give a quick breakdown of what is in here.
