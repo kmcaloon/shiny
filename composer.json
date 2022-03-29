@@ -11,6 +11,7 @@
       "classmap": [ "src", "lib" ]
     },
     "config": {
-      "optimize-autoloader": true
+      "optimize-autoloader": true,
+      "vendor-dir": "lib/vendor/"
     }
 }

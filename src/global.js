@@ -198,7 +198,6 @@ if( !! watchScrollers ) {
 /**
  * Prefetching.
  */
-
 const { effectiveType } = typeof navigator?.connection == 'object' ? navigator.connection : {};
 if( ! document.body.classList.contains( 'logged-in' ) && effectiveType !== '4g' && effectiveType !== '5g' ) {
 
