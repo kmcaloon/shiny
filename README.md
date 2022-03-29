@@ -67,6 +67,7 @@ shiny/                               # → More info soon
 │   │   └── _internal.php
 │   ├── marketing/
 │   │   └── _marketing.php
+│   ├── vendor/
 │   ├── woocommerce/
 │   │   └── _woocommerce.php
 │   ├── acf.php
@@ -103,7 +104,6 @@ shiny/                               # → More info soon
 │   ├── admin.js
 │   ├── global.js
 │   └── head-scripts.js
-├── vendor/
 ├── .babelrc
 ├── .browserlistsrc
 ├── 404.php
