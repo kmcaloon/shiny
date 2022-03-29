@@ -36,21 +36,21 @@ module.exports = {
         ],
         safelist: {
           greedy: [
-            /is-/,
-            /ra-/,
-            /align*/,
+            /align/,
             /float/,
-            /^i/
+            /srt/,
+            /^bg-/,
+            /^is-/,
+            /^ra-/,
+            /^i-/,
+            /!important/
           ],
           deep: [
-            /.*olark*/,
             /table/,
             /Cart/,
             /woocommerce/,
             /wp-/,
-            /slick/
           ],
-          standard: ['srt', /bg-*/, /.!important*/ ]
         },
         extractors: [ {
           extractor: customExtractor,
