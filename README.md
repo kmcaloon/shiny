@@ -182,39 +182,40 @@ So for example, if you wanted to use the built-in image component this is how yo
 ```
 $image = new \Shiny\Components\Image( $args );
 $image->render();
-
+Block__element
 // Or in this case the render function accept optional class names.
-$image->render( 'Block__element' ); 
+$image->render( '' ); 
 ```
   
 
 ## SCSS
 
-TODO
+In terms of methodologies, the files are structured according to a modified Atom design system (molecules and organisms) and classes follow a BEM syntax. All global files and their partials are in the `src` directory, and all components are broken up into  `src/components/molecules` and `src\components\organisms`. Each component's class name is in PascalCase with each major sub-element using BEM syntax. So for example you might have a `Hero` component with a nested `Hero__heading` element. Modified versions of an element, usually referring to various states or styles, use an `is-{{modifier}}` syntax. So in this example if you had an italic version of the heading it would look like this: `Hero__heading.is-italic`. 
 
-  
+Bootstrap is utilized as the underlying utility framework with a view modifications. First, it adopts much of Tailwind's syntax with regards to responsive styles and alignment. So instead of Bootstrap's `{{property}}-{{breakpoint}}-{{value}}` syntax, it uses Tailwind's `{{breakpoint}}:{{property}}-{{value}}`. So `col-md-6` would now look like this: `md:col-6`. In terms of alignment, instead of Bootstrap's `start` and `end` syntax it uses Tailwind's `left` and `right`. Finally, there are a few additional custom utility classes included within the global files.
+
 
 ## Javascript
 
-TODO
+Javascript overhead is kept to a minimum. All default WordPress javascript is disabled including jQuery, and while this helps with performance it may cause issues if you choose to utilize a plugin's frontend assets. For instance, the default cart and checkout functionality for Woocommerce requires jQuery to be enqueued on those pages, so you can selectively enqueue it if needbe. If for some reason you want jQuery to be enqueued globally, you can set "`KILL_JQUERY": false` within `config.json`. The default `head-scripts.js` file includes some helpful polyfills for older browsers as well as a helper function for asyncrounously loading subsequent scripts on-demand. `global.js` is where all global scripts are found. By default this includes a few helpers for toggling states, watching scoll positions, forms, link prefetching, etc. AlpineJS is included as a package and is highly recommended if state management is needed on the frontend.
 
   
 
 ## Admin
 
-TODO
-
+Since this framework is used for custom client web apps and not for general themes for public distribution, most backend functionality such as registering Custom Post Types, custom admin UI, REST API endpoints, etc. is located within the theme instead of regulated to separate plugin(s). In fact, plugin usage in general is kept to a minimum other than cases where large pieces of functionality are smoothly handled by well-reputed and regularly maintained plugins. Even at that it is recommended to check impact on frontend performance and to dequeue assets as much as possible. Currently this framework is meant to be used alongside [Advanced Custom Fields](https://www.advancedcustomfields.com/), usually leveraging [ACF Extended](https://www.acf-extended.com/).
   
 
 ## Build Tools & Package Management
 
-TODO
+A custom Gulp build process is included for processing front-end assets and generating seperate stylesheets and scripts for components. During the build process, Webpack and Babel are utilized for bundling the javascript and supporting next generation Javascript. React is supported out of the box, however default Preact's compatibility layer is enabled by default.
 
+For styles, PostCSS is used to help with various tasks such as autoprefixing, minifying, and purging unused styles. Purging is accomplished by crawling through all class selectors within `.php` and `.js` files and removing any unused classes from stylesheets. To prevent specific selectors from being purged, see https://purgecss.com/safelisting.html
   
 
 ## Recommended Best Practices
 
-TODO. Basically these sum up my recommended approach:
+TODO. Basically these pretty much sum up everything:
 
 https://10up.github.io/Engineering-Best-Practices/
 
