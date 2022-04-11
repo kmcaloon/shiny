@@ -403,7 +403,11 @@ function svg( $file ) {
     $file = "$file.svg";
   }
 
-  return file_get_contents( \Shiny\Settings\dir( 'img' ) . "/$file" );
+  $path = \Shiny\Settings\dir( 'img' ) . "/$file";
+
+  if( file_exists( $path ) ) {
+    return file_get_contents( $path );
+  }
 
 }
 

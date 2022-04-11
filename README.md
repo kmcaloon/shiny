@@ -3,45 +3,53 @@
 
 # shiny!
 
-  
-
-![enter image description here](https://drive.google.com/uc?export=view&id=1ebT8kODAE-BxnlRR82ufxK_3hvZmA7VF)
-
-  
 **A shiny WordPress starter framework for building modern performant web apps**
   
 
-This is the personal starter framework that I use when starting new WordPress projects. It is a collection of code and patterns that I have built up over the years, including a custom scss/css framework that is sort of like the mutant child of Bootstrap and Tailwind. This repository and README are WIPs, and although this codebase is for personal use I figured I would give a quick breakdown of what is in here.
+This is the personal starter framework that I use when starting new WordPress projects, partly inspired by work within the React/JAMstack ecosystem. It is a collection of code and patterns that I have built up over the years, including a custom scss/css framework that is sort of like an extendible hybrid of Bootstrap and Tailwind. This repository and README are works in progress, and although this codebase is for personal use I figured I would give a quick breakdown of what is in here.
+
+## 🎂 Features  
+
+- ***Performance first***. Everything is built with the intention of being as modular and lightweight as possible for Lighthouse.
+
+- ***Component-based architecture*** similar to React organized along modified Atom design principles.
+
+- ***Modern stack*** taking advantage of modern technology like PHP7+, next generation Javascript, etc.
+
+- ***Optimal image handling*** with lazyloading, automatic srcset and sizes, etc.
+
+- ***Custom SCSS framework*** leveraging Bootstrap's Utility API to generate or convert utility classes similar to Tailwind's syntax.
+
+- ***Lightweight vanilla JS*** set up and helper functions. Alpine.js highly recommended.
+
+- ***Custom Gravity Forms frontend*** rendering for performance, and API endpoint for processing submissions.
+
+- ***Frontend build tools*** with NPM/Yarn, Gulp, Webpack, PostCSS, and Babel.
+
+- A general affinity for all things related to the ***legendary saga Firefly***.
+
+<div style="text-align: center; margin-top: 2rem;">
+
+**Live mobile results from full-fledged ecommerce site. 
+Mobile score averages between 84-95 when served from cache, Desktop around 99.**
+
+<img src="https://drive.google.com/uc?export=view&id=1wmrm47ynao3YFhlXWjqnlNhU7aLbbnPa" alt="Lighthouse Results"
+style="display: block; margin: 0 auto; width: 100%; max-width: 800px;"
+/>
+</div>
+
+
   
 
-## 🎂 Features
 
-  
 
-- Performance first. Everything is built with the intention of being as modular and lightweight as possible for Lighthouse.
-
-- Modern stack taking advantage of modern technology like PHP7+, next generation Javascript, etc.
-
-- Component-based architecture similar to React organized along modified Atom design principles.
-
-- Optimal image handling with lazyloading, automatic srcset and sizes, etc.
-
-- Custom SCSS framework leveraging Bootstrap's Utility API to generate or convert utility classes similar to Tailwind's syntax.
-
-- Lightweight vanilla JS set up and helper functions. Alpine.js highly recommended.
-
-- Custom Gravity Forms frontend rendering for performance, and API endpoint for processing submissions.
-
-- Frontend build tools with NPM/Yarn, Gulp, Webpack, PostCSS, and Babel.
-
-- A general affinity for all things related to the legendary saga Firefly.
 
 ## Background
-For some background, after spending a decent amount of time in the Jamstack ecosystem (primarily with NextJS and Gatsby) I started questioning whether it was everything I hoped and dreamed it would be. The DX was incredible, and it was fun playing around with all of the latest a greatest tools, but among other potential drawbacks I noticed that I wasn't seeing greatly improved Lighthouse scores for my projects. In fact, I started testing many of the popular sites and noticed that every single one had relatively poor Core Web Vitals on mobile, which had now become a ranking factor. This had me then questioning why exactly I was trying to replicate built-in browser capabilities with javascript, especially with the overhead it came with? For most of my projects this was unnecessary and the honest answer I came up with was that the main benefit I was seeing from this approach was an improved DX. It was simply more fun to build with. Since it came with some tradeoffs, this was an unacceptable answer.
+After spending a decent amount of time in the React/JAMstack ecosystem I started questioning whether it was everything I hoped and dreamed it would be. The DX was incredible, React was enjoyable to work with, and it was fun playing around with all of the latest a greatest tools, but among other potential drawbacks I noticed that I wasn't seeing greatly improved Lighthouse scores for my projects. In fact, I started testing many of the popular sites and noticed that every single one had relatively poor Core Web Vitals on mobile — which had now become a ranking factor. This had me then questioning why exactly I was trying to replicate built-in browser capabilities with javascript for general websites, especially with the overhead it came with? For most of my projects this was unnecessary and the honest answer I came up with was that the main benefit I was seeing from this approach was an improved DX and that I was able to use React. It was simply more fun to build with. Since it came with a decent amount of unnecessary overhead/tradeoffs for these use-cases, this was an unacceptable answer.
 
 Long story short, I migrated one of my main projects which is a somewhat involved ecommerce site using this framework. The result was an almost 80% improved mobile Lighthouse score. Since then I have seen similar results for other clients.
 
-While obviously React frameworks are amazing tools and are great choices for certain kinds of projects, I have been very happy with these results along with trying to leverage constantly improving native browser functionality. If interested, I would highly recommend watching [Chris Ferdinandi - The Lean Web](https://www.youtube.com/watch?v=h5CnfIAUmrU)
+While obviously React frameworks are amazing tools and still my gotos for specific kinds of projects, I have been very happy with these results along with trying to leverage constantly improving native browser functionality. If interested, I would highly recommend watching [Chris Ferdinandi - The Lean Web](https://www.youtube.com/watch?v=h5CnfIAUmrU)
 
   
 
