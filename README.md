@@ -1,9 +1,13 @@
 
   
 
-# shiny!
+<img src="https://drive.google.com/uc?export=view&id=1ebT8kODAE-BxnlRR82ufxK_3hvZmA7VF" alt="Shiny!"
+style="display: block; margin: 0 auto; width: 100%; max-width: 350px;"
+/>
 
-**A shiny WordPress starter framework for building modern performant web apps**
+<h4 style="text-align: center; margin-bottom: 1rem;">
+ A shiny WordPress starter framework for building modern performant web apps
+</h4>
   
 
 This is the personal starter framework that I use when starting new WordPress projects, partly inspired by work within the React/JAMstack ecosystem. It is a collection of code and patterns that I have built up over the years, including a custom scss/css framework that is sort of like an extendible hybrid of Bootstrap and Tailwind. This repository and README are works in progress, and although this codebase is for personal use I figured I would give a quick breakdown of what is in here.
@@ -20,7 +24,7 @@ This is the personal starter framework that I use when starting new WordPress pr
 
 - ***Custom SCSS framework*** leveraging Bootstrap's Utility API to generate or convert utility classes similar to Tailwind's syntax.
 
-- ***Lightweight vanilla JS*** set up and helper functions. Alpine.js highly recommended.
+- ***Lightweight vanilla JS*** set up and helper functions. React & Preact support included. Alpine.js highly recommended.
 
 - ***Custom Gravity Forms frontend*** rendering for performance, and API endpoint for processing submissions.
 
@@ -28,7 +32,7 @@ This is the personal starter framework that I use when starting new WordPress pr
 
 - A general affinity for all things related to the ***legendary saga Firefly***.
 
-<div style="text-align: center; margin-top: 2rem;">
+<div style="text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
 
 **Live mobile results from full-fledged ecommerce site. 
 Mobile score averages between 84-95 when served from cache, Desktop around 99.**
@@ -131,6 +135,22 @@ shiny/                               # → More info soon
 └── webpack.config.js
 ```
 
+## Components
+
+<img src="https://drive.google.com/uc?export=view&id=1eClSiVl56cbmaKpgAs-BWuDvUxNje9mD" alt="Image of code for new demo component" style="display: block; margin-bottom: 2rem;">
+
+All components extend React.Component — 🤦 I mean `\Shiny\Component` — which comes with its own set of methods to help with constructing and rendering components. Each component needs to be given a unique handle which is used as its class and file name, and must be placed within its own directory using this handle. Among other features, this allows for smooth autoloading without having to worry about requiring component files wherever you use them. For example, the Image component has `Image` as its handle, and is found within `src/components/molecules/Image/Image.php`. All component-specific styles or scripts must be placed within the same directory using the same handle.
+
+  
+
+Each component needs to have a `__construct` method which calls the parent's method with the following arguments `parent::__construct( {{ComponentHandle}}, __DIR__, $optional_args )`. The optional third argument is an array of arguments to pass to the component. For now the only two arguments are a `fields` argument which takes an associative array and sets properties for your component based on the key value pairs, and an `is_preview` argument for use within the Block Editor.
+
+  
+
+Finally, each component needs to have a `render()` method which outputs its HTML. It can be as flexible and use any parameters you may need (i.e. custom classes, nested components, etc.), however it is suggested that most logic be delegated to either `__construct()` or other methods. `render()` should serve as the component's primary view layer. To use component-specific css, use `$this->print_styles()` before rendering the HTML. For javascript, use `$this->print_scripts()`. Usually your scripts depend on the component's DOM elements, and if so the method should be placed after the HTML.
+
+  
+
 ## Asset Handling
 
 All of WordPress' default frontend assets are disabled by default. This includes jQuery which can be enqueued on a case-by-case basis if needbe. If for some reason you want jQuery to be enqueued globally, you can set "`KILL_JQUERY": false` within `config.json`.
@@ -171,30 +191,6 @@ In addition, if you would like to automatically prefetch local links once they b
 
 To render responsive images with lazy loading capabilities, use the `Image` component located in `src/components/molecules/Image.php`. Basically it takes an ACF image array within its arguments, or builds one using `acf_get_attachment()`, and then generates the necessary `srcset` and `sizes` attributes. This component is a WIP and there are a few additional features, and for more information you can view the file.
 
-  
-
-## Components
-
-All components extend React.Component -- 🤦 I mean \Shiny\Component -- which comes with its own set of methods to help with constructing and rendering components. Each component needs to be given a unique handle which is used as its class and file name, and must be placed within its own directory using this handle. Among other features, this allows for smooth autoloading without having to worry about requiring component files wherever you use them. For example, the Image component has `Image` as its handle, and is found within `src/components/molecules/Image/Image.php`. All component-specific styles or scripts must be placed within the same directory using the same handle.
-
-  
-
-Each component needs to have a `__construct` method which calls the parent's method with the following arguments `parent::__construct( {{ComponentHandle}}, __DIR__, $optional_args )`. The optional third argument is an array of arguments to pass to the component. For now the only two arguments are a `fields` argument which takes an associative array and sets properties for your component based on the key value pairs, and an `is_preview` argument for use within the Block Editor.
-
-  
-
-Finally, each component needs to have a `render()` method which outputs its HTML. It can be as flexible and use any parameters you may need (ie nested components or HTML), however it is suggested that most logic be delegated to either `__construct()` or other methods, as `render()` should serve as the component's primary view layer. To use component-specific css, use `$this->print_styles()` before rendering the HTML. For javascript, use `$this->print_scripts()`. Usually your scripts depend on the component's DOM elements, and if so the method should be placed after the HTML.
-
-So for example, if you wanted to use the built-in image component this is how you would render it:
-
-```
-$image = new \Shiny\Components\Image( $args );
-$image->render();
-Block__element
-// Or in this case the render function accept optional class names.
-$image->render( '' ); 
-```
-  
 
 ## SCSS
 
